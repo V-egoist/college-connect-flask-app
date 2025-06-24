@@ -12,6 +12,9 @@ from werkzeug.security import generate_password_hash, check_password_hash # Adde
 import uuid # Import for generating unique tokens
 import secrets # Good for generating strong random tokens
 import json
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 from dotenv import load_dotenv
 
@@ -79,18 +82,43 @@ def admin_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
-def send_password_reset_email_mock(to_email, reset_link):
+
+
+def send_password_reset_email(to_email, reset_link):
     """
-    Mocks sending a password reset email.
-    In a real application, you would integrate with an email service (e.g., SendGrid, Mailgun, or smtplib).
+    Sends a password reset email using an SMTP server.
+    Reads credentials from environment variables.
     """
-    print(f"\n--- MOCK EMAIL SENT ---")
-    print(f"To: {to_email}")
-    print(f"Subject: Password Reset Request for College Connect")
-    print(f"Body: You requested a password reset. Please click the following link to reset your password:")
-    print(f"      {reset_link}")
-    print(f"This link is valid for 1 hour. If you did not request this, please ignore this email.")
-    print(f"-----------------------\n")
+    # Get email credentials from environment variables
+    # For local development, these would be in your .env file
+    # For Render, these would be set directly in Render's environment variables
+    EMAIL_ADDRESS = os.environ.get('EMAIL_ADDRESS')
+    EMAIL_PASSWORD = os.environ.get('EMAIL_PASSWORD') # This should be the App Password for Gmail
+    SMTP_SERVER = os.environ.get('SMTP_SERVER', 'smtp.gmail.com') # Default for Gmail
+    SMTP_PORT = int(os.environ.get('SMTP_PORT', 587)) # Default for Gmail TLS
+
+    if not EMAIL_ADDRESS or not EMAIL_PASSWORD:
+        print("ERROR: Email credentials not set in environment variables. Cannot send real email.")
+        return # Exit if credentials are missing
+
+    msg = MIMEMultipart()
+    msg['From'] = EMAIL_ADDRESS
+    msg['To'] = to_email
+    msg['Subject'] = "Password Reset Request for College Connect"
+
+    body = f"""
+    Hello,
+
+    You requested a password reset for your College Connect account.
+    Please click the following link to reset your password:
+
+    {reset_link}
+
+    This link is valid for 1 hour. If you did not request this, please ignore this email.
+
+    Thank you,
+    The College Connect Team"""
+
 # --- Core Routes ---
 
 @app.route('/')
@@ -2504,7 +2532,7 @@ def api_request_password_reset():
     reset_link = url_for('reset_password_token', token=token, _external=True)
 
     # Send the mock email
-    send_password_reset_email_mock(user['email'], reset_link)
+    send_password_reset_email(user['email'], reset_link)
 
     return jsonify({'success': True, 'message': 'If an account with that email exists, a password reset link has been sent.'}), 200
 
