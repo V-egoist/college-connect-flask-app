@@ -92,6 +92,12 @@ def send_password_reset_email_mock(to_email, reset_link):
     print(f"This link is valid for 1 hour. If you did not request this, please ignore this email.")
     print(f"-----------------------\n")
 # --- Core Routes ---
+
+@app.route('/')
+def landing_page():
+    # You can add logic here later, e.g., to check if user is logged in
+    return render_template('index.html')
+
 @app.route('/index.html', methods=['GET'])
 @login_required # Assuming your home page requires users to be logged in
 def index():

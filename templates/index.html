@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Connect - Social Platform for Students</title>
+    <meta name="description" content="The ultimate social platform designed exclusively for college students. Connect, collaborate, and create lasting memories with your campus community.">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="logo">College Connect</div>
+        <div class="nav-right">
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search College Connect">
+            </div>
+            <div class="profile-pic">
+                <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Profile">
+            </div>
+        </div>
+    </nav>
+
+    <div class="left-sidebar">
+        <div class="menu-section">
+            <h3>Menu</h3>
+            <ul class="sidebar-menu">
+                <li><a href="{{ url_for('home') }}"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="{{ url_for('friends') }}"><i class="fas fa-users"></i> Friends</a></li>
+                <li><a href="{{ url_for('events') }}"><i class="fas fa-calendar"></i> Events</a></li>
+                <li><a href="{{ url_for('studygroups') }}"><i class="fas fa-graduation-cap"></i> Study Groups</a></li>
+                <li><a href="{{ url_for('profile') }}"><i class="fas fa-user"></i> Profile</a></li>
+            </ul>
+        </div>
+        
+        <div class="groups-section">
+            <h3>Your Groups</h3>
+            <ul class="groups-list">
+                <li>
+                    <img src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=36&h=36&fit=crop" alt="Study Group">
+                    Computer Science Study Group
+                </li>
+                <li>
+                    <img src="https://images.pexels.com/photos/1595391/pexels-photo-1595391.jpeg?auto=compress&cs=tinysrgb&w=36&h=36&fit=crop" alt="Basketball">
+                    Campus Basketball Club
+                </li>
+                <li>
+                    <img src="https://images.pexels.com/photos/1181533/pexels-photo-1181533.jpeg?auto=compress&cs=tinysrgb&w=36&h=36&fit=crop" alt="Photography">
+                    Photography Society
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="middle-content">
+            <div class="welcome-section">
+                <div class="welcome-content">
+                    <h1 class="welcome-title">Welcome to College Connect</h1>
+                    <h2 class="welcome-subtitle">Built by Students, for Students</h2>
+                    <p class="welcome-description">
+                        We understand the unique challenges of college life because we've been there. 
+                        College Connect was created to bridge the gap between academics and social life, 
+                        making your college experience more meaningful and connected.
+                    </p>
+                    
+                    <div class="auth-links">
+                        <a href="{{ url_for('signup') }}" class="auth-button signup-button">
+                            <i class="fas fa-user-plus"></i>
+                            Don't have an account? Sign Up
+                        </a>
+                        <a href="{{ url_for('login') }}" class="auth-button login-button">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Already have an account? Login
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="welcome-features">
+                    <div class="feature-card">
+                        <i class="fas fa-users feature-icon"></i>
+                        <h3>Find Your Tribe</h3>
+                        <p>Connect with classmates and like-minded students</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-book-open feature-icon"></i>
+                        <h3>Study Groups</h3>
+                        <p>Form study groups and ace your exams together</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-calendar-alt feature-icon"></i>
+                        <h3>Campus Events</h3>
+                        <p>Stay updated on parties and campus activities</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-comments feature-icon"></i>
+                        <h3>Real-time Chat</h3>
+                        <p>Instant messaging with friends and study partners</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="posts-container">
+                <div class="post">
+                    <div class="post-header">
+                        <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=40&h=40&fit=crop" alt="Sarah">
+                        <div>
+                            <strong>Sarah Johnson</strong>
+                            <div style="color: #65676b; font-size: 12px;">Computer Science Major • 2 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>Just finished our group project for Data Structures! Thanks to everyone in our study group - we couldn't have done it without each other. College Connect really helped us stay organized and connected throughout the semester! 📚✨</p>
+                    </div>
+                    <div class="post-actions">
+                        <div class="action-button like-button">
+                            <i class="fas fa-thumbs-up"></i>
+                            <span class="like-count">24</span> Like
+                        </div>
+                        <div class="action-button">
+                            <i class="fas fa-comment"></i>
+                            Comment
+                        </div>
+                        <div class="action-button">
+                            <i class="fas fa-share"></i>
+                            Share
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post">
+                    <div class="post-header">
+                        <img src="https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=40&h=40&fit=crop" alt="Mike">
+                        <div>
+                            <strong>Mike Chen</strong>
+                            <div style="color: #65676b; font-size: 12px;">Business Major • 5 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>Basketball tournament this weekend! Our team is ready 🏀 Who's coming to cheer us on? Let's show some school spirit! #CampusLife #Basketball</p>
+                        <img src="https://images.pexels.com/photos/1752757/pexels-photo-1752757.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Basketball" class="post-image">
+                    </div>
+                    <div class="post-actions">
+                        <div class="action-button like-button">
+                            <i class="fas fa-thumbs-up"></i>
+                            <span class="like-count">18</span> Like
+                        </div>
+                        <div class="action-button">
+                            <i class="fas fa-comment"></i>
+                            Comment
+                        </div>
+                        <div class="action-button">
+                            <i class="fas fa-share"></i>
+                            Share
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
