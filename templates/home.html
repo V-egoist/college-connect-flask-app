@@ -12,25 +12,26 @@
 </head>
 <body>
   <nav class="top-nav">
-        <div class="nav-left">
-            <a href="{{ url_for('home') }}" class="logo">College Connect</a>
-        </div>
-        <div class="search-container">
+    <div class="nav-left">
+      <a href="{{ url_for('home') }}" class="logo">College Connect</a>
+    </div>
+    <div class="nav-right">
+      <div class="search-container">
         <i class="fas fa-search"></i>
         <input
           type="text"
           id="navSearchInput"
           placeholder="Search College Connect..."
         />
-        </div>
-            <a href="{{ url_for('settings') }}" class="profile-pic">
-                <img
-                  src="{{ user.profile_pic_url if user and user.profile_pic_url else url_for('static', filename='default-profile.jpg') }}"
-                  alt="Profile Picture"
-                />
-            </a>
-        </div>
-    </nav>
+      </div>
+      <a href="{{ url_for('settings') }}" class="profile-pic">
+        <img
+          src="{{ user.profile_pic_url if user and user.profile_pic_url else url_for('static', filename='default-profile.jpg') }}"
+          alt="Profile Picture"
+        />
+      </a>
+    </div>
+  </nav>
 
   <div class="main-container">
     <div class="left-sidebar">
@@ -40,12 +41,9 @@
           <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
           <li><a href="/communities"><i class="fas fa-users"></i> Communities</a></li>
           <li><a href="/events"><i class="fas fa-calendar-alt"></i> Events</a></li>
-
-          <!-- Admin-only Trending link -->
           {% if is_admin %}
           <li><a href="/trending"><i class="fas fa-chart-line"></i> Trending</a></li>
           {% endif %}
-
           <li><a href="/settings"><i class="fas fa-cog"></i> Settings</a></li>
         </ul>
       </div>
@@ -54,11 +52,9 @@
     <div class="middle-content">
       <div class="create-post">
         <div class="post-top">
-          
           <img src="{{ user.profile_pic_url if user and user.profile_pic_url else url_for('static', filename='default-profile.jpg') }}"
-                  alt="Profile Picture"
-                />
-            </a>
+              alt="Profile Picture"
+          />
           <input type="text" placeholder="What's on your mind?" id="post-input" />
         </div>
         <div class="post-bottom">

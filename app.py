@@ -19,7 +19,7 @@ import uuid # ADDED: For more robust unique filenames
 
 app = Flask(__name__)
 
-app.secret_key = os.environ.get('FLASK_SECRET_KEY', 'your_super_secret_key_here_for_dev')
+app.secret_key = os.environ.get('FLASK_SECRET_KEY', 'super_secret_key_')
 
 MONGO_URI_ATLAS_OR_LOCAL = os.environ.get('MONGO_URI', 'mongodb://localhost:27017/college_connect')
     
@@ -29,7 +29,7 @@ app.config["SESSION_TYPE"] = "mongodb"
     
 app.config["SESSION_MONGODB"] = MongoClient(MONGO_URI_ATLAS_OR_LOCAL)
 app.config["SESSION_MONGODB_DB"] = "college_connect_sessions"
-app.config["SESSION_MONGODB_COLLECT"] = "sessions"
+app.config["SESSION_MONGODB_COLLECTIONS"] = "sessions"
 
 Session(app)
 
