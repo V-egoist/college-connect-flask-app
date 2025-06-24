@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - College Connect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+</head>      
+
+<body>
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="{{ url_for('index') }}" class="logo">College Connect</a>
+        </div>
+    </nav>
+
+    <div class="register-container">
+        <div class="register-card">
+            <h2>Create an Account</h2>
+            <form id="register-form" class="register-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                    <small id="nameError" class="form-error-message"></small>
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                    <small id="usernameError" class="form-error-message"></small>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                    <small id="emailError" class="form-error-message"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <small id="passwordError" class="form-error-message"></small> 
+                </div>
+
+                <div class="form-group">
+                    <label for="course">Course</label>
+                    <input type="text" id="course" name="course" required>
+                    <small id="courseError" class="form-error-message"></small>
+                </div>
+                <div class="form-group">
+                    <label for="college_id">College ID</label>
+                    <input type="text" id="college_id" name="college_id" required>
+                    <small id="collegeIdError" class="form-error-message"></small>
+                </div>
+
+                <button type="submit" class="register-button">Register</button>
+                <div id="generalRegistrationError" class="form-error-message" style="margin-top: 10px;"></div>
+            </form>
+            <p class="register-link">Already have an account? <a href="{{ url_for('login_page') }}">Login here</a></p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='register.js') }}"></script>
+</body>
+</html>

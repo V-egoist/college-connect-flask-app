@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Most Reposted Posts - Social Media Dashboard</title>
+    <!-- Links to your combined CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='most-reposts.css') }}">
+    <!-- Include Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="detail-header">
+            <!-- Back button leading to the main trending dashboard -->
+            <a href="/trending" class="back-btn">&larr; Back to Dashboard</a>
+            <h1>Top Most Reposted Posts</h1> <!-- Changed from Top 5 to Top for dynamic count -->
+            <p>Posts ranked by the number of times they have been reposted.</p>
+        </div>
+
+        <!-- Dynamic Post List will be populated here by JavaScript -->
+        <div class="post-list" id="most-reposted-posts-full-list">
+            <p>Loading most reposted posts...</p>
+            <!-- Posts will be dynamically inserted here by most-reposts.js -->
+        </div>
+    </div>
+    <!-- JavaScript for fetching and displaying data -->
+    <script src="{{ url_for('static', filename='most-reposts.js') }}"></script>
+</body>
+</html>

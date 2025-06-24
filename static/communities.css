@@ -1,0 +1,361 @@
+/* Basic Container */
+.communities-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* Communities Header - Adjusted for the button */
+.communities-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* General Button styles */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background: #1877f2;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #166fe5;
+}
+
+.btn-success {
+    background: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background: #218838;
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #c82333;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+/* Community Creation Form */
+.community-form-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: none; /* Hidden by default */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    /* Added transition for smoother toggle */
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease-in-out;
+}
+
+.community-form-container.active {
+    display: block; /* Shown when active class is added by JS */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.community-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Profile Picture Upload Section */
+.profile-pic-upload {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap; /* Added for responsiveness */
+}
+
+.profile-pic-preview {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px dashed #a0a0a0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    background-color: #f0f2f5;
+}
+
+.profile-pic-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* This will be managed by JS for the 'has-image' class. */
+    /* By default, the default image src will load, and JS will add .has-image. */
+}
+
+.profile-pic-preview .fas.fa-camera {
+    font-size: 2.5em;
+    color: #a0a0a0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* This will be hidden by JS if an image is loaded, by adding the .has-image class to parent. */
+}
+
+/* This class will be added by JavaScript when an image is loaded */
+.profile-pic-preview.has-image img {
+    display: block; /* Ensure the image is visible */
+}
+
+.profile-pic-preview.has-image .fas.fa-camera {
+    display: none; /* Hide the camera icon when an image is present */
+}
+
+
+/* Section Headers */
+.communities-list-sections {
+    margin-top: 30px;
+}
+
+.communities-section {
+    margin-bottom: 40px;
+}
+
+.communities-section h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee; /* Added a subtle line */
+    padding-bottom: 10px; /* Spacing for the line */
+}
+
+/* Communities Grid Layout */
+.communities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+/* Individual Community Card */
+.community-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.community-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.community-card > a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.community-card-img {
+    width: 100%;
+    height: 150px; /* Consistent height for images */
+    object-fit: cover; /* Prevents image distortion */
+    display: block;
+}
+
+.community-card-body {
+    padding: 15px;
+    flex-grow: 1;
+}
+
+.community-card-title {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.community-card-title a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.community-card-description {
+    font-size: 0.9em;
+    color: #666;
+    line-height: 1.5;
+    /* Limit lines for consistent card height */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limit description to 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 4.5em; /* Ensures consistent height for descriptions (1.5em * 3 lines) */
+}
+
+.community-card-footer {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eee;
+    background-color: #f9f9f9; /* Slightly different background for footer */
+}
+
+.community-card-footer .members-count {
+    font-size: 0.85em;
+    color: #555;
+}
+
+.community-card-footer .btn {
+    padding: 8px 15px;
+    font-size: 0.85em;
+}
+
+/* General Navbar Styling (from your previous HTML/CSS, included for completeness) */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.top-nav .nav-left .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #1877f2;
+    text-decoration: none;
+}
+
+.top-nav .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.top-nav .search-container {
+    display: flex;
+    align-items: center;
+    background-color: #f0f2f5;
+    border-radius: 20px;
+    padding: 5px 15px;
+}
+
+.top-nav .search-container i {
+    color: #606770;
+    margin-right: 8px;
+}
+
+.top-nav .search-container input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 1em;
+    padding: 5px 0;
+    color: #333;
+    width: 200px;
+}
+
+.top-nav .profile-pic img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #1877f2;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .communities-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+
+    .top-nav .search-container {
+        display: none; /* Hide search bar on smaller screens for space */
+    }
+
+    .communities-container {
+        width: 95%;
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .communities-grid {
+        grid-template-columns: 1fr; /* Stack cards vertically on very small screens */
+    }
+
+    .profile-pic-upload {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .community-form-container {
+        padding: 15px;
+    }
+    .communities-header {
+        flex-direction: column; /* Stack header elements */
+        align-items: flex-start;
+    }
+    .communities-header .btn {
+        width: 100%; /* Make button full width */
+        margin-top: 15px;
+        justify-content: center;
+    }
+}

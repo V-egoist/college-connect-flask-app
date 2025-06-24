@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management - College Connect Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin-styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="admin-header">
+        <div class="header-container">
+            <div class="header-left">
+                <h1 class="logo">College Connect</h1>
+                <span class="divider">|</span>
+                <span class="subtitle">Admin Dashboard</span>
+            </div>
+            <div class="header-right">
+                <button class="settings-btn">
+                    <i class="fas fa-cog"></i>
+                </button>
+                <div class="admin-avatar">A</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="admin-nav">
+        <div class="nav-container">
+            <a href="{{ url_for('admin_dashboard_page') }}" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="{{ url_for('admin_users_page') }}" class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>Users</span>
+            </a>
+            <a href="{{ url_for('admin_posts_page') }}" class="nav-item">
+                <i class="fas fa-file-text"></i>
+                <span>Posts</span>
+            </a>
+            <a href="{{ url_for('admin_communities_page') }}" class="nav-item">
+                <i class="fas fa-comments"></i>
+                <span>Communities</span>
+            </a>
+            <a href="{{ url_for('admin_trending_page') }}" class="nav-item">
+                <i class="fas fa-trending-up"></i>
+                <span>Trending</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <div class="page-header">
+            <h2>Event Management</h2>
+            <div class="page-controls">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search events...">
+                </div>
+                <button class="create-btn">Create Event</button>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Event Title</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Location</th>
+                        <th>Participants</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="event-title-cell">
+                                <i class="fas fa-calendar-alt event-icon"></i>
+                                <span class="event-name">Annual Career Fair</span>
+                            </div>
+                        </td>
+                        <td>2024-09-10</td>
+                        <td>09:00 AM</td>
+                        <td>Campus Gym</td>
+                        <td>350</td>
+                        <td>
+                            <button class="action-btn view">View</button>
+                            <button class="action-btn edit">Edit</button>
+                            <button class="action-btn delete">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="event-title-cell">
+                                <i class="fas fa-calendar-alt event-icon"></i>
+                                <span class="event-name">Freshers Welcome Party</span>
+                            </div>
+                        </td>
+                        <td>2024-08-25</td>
+                        <td>07:00 PM</td>
+                        <td>Student Union Hall</td>
+                        <td>520</td>
+                        <td>
+                            <button class="action-btn view">View</button>
+                            <button class="action-btn edit">Edit</button>
+                            <button class="action-btn delete">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="event-title-cell">
+                                <i class="fas fa-calendar-alt event-icon"></i>
+                                <span class="event-name">Tech Innovate Hackathon</span>
+                            </div>
+                        </td>
+                        <td>2024-10-05</td>
+                        <td>08:00 AM</td>
+                        <td>Engineering Lab</td>
+                        <td>180</td>
+                        <td>
+                            <button class="action-btn view">View</button>
+                            <button class="action-btn edit">Edit</button>
+                            <button class="action-btn delete">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="event-title-cell">
+                                <i class="fas fa-calendar-alt event-icon"></i>
+                                <span class="event-name">Charity Fun Run</span>
+                            </div>
+                        </td>
+                        <td>2024-11-12</td>
+                        <td>10:00 AM</td>
+                        <td>Campus Green</td>
+                        <td>290</td>
+                        <td>
+                            <button class="action-btn view">View</button>
+                            <button class="action-btn edit">Edit</button>
+                            <button class="action-btn delete">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="event-title-cell">
+                                <i class="fas fa-calendar-alt event-icon"></i>
+                                <span class="event-name">Guest Lecture: AI in Future</span>
+                            </div>
+                        </td>
+                        <td>2024-09-20</td>
+                        <td>02:00 PM</td>
+                        <td>Auditorium</td>
+                        <td>210</td>
+                        <td>
+                            <button class="action-btn view">View</button>
+                            <button class="action-btn edit">Edit</button>
+                            <button class="action-btn delete">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>

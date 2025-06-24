@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{ community.name }} - College Connect</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='community_view.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="top-nav">
+    <div class="nav-left">
+      <a href="{{ url_for('home') }}" class="logo">College Connect</a>
+    </div>
+  </nav>
+
+  <!-- Community Header -->
+  <div class="community-header">
+    <h1 id="community-name">{{ community.name }}</h1>
+    <p><span id="member-count">{{ community.members|length }}</span> members</p>
+  </div>
+
+  <!-- Main Content Area -->
+  <div class="main-container">
+    <!-- Left Sidebar -->
+    <div class="left-sidebar">
+      <div class="community-actions">
+        <button id="leave-community" class="leave-btn">Leave Community</button>
+      </div>
+
+      <div class="community-info-section">
+        <h3>About Community</h3>
+        <div class="community-description">
+          <p id="community-description">{{ community.description }}</p>
+        </div>
+      </div>
+
+      <div class="menu-section">
+        <h3>Community Menu</h3>
+        <ul class="sidebar-menu">
+          <li><a href="#"><i class="fas fa-users"></i> Members</a></li>
+          <!-- Removed Events, Files, and Settings links as requested -->
+        </ul>
+      </div>
+    </div>
+
+    <!-- Middle Content Area -->
+    <div class="middle-content">
+      <!-- Post Creation Area -->
+      <div class="post-creation-area">
+        <h2>Share with the Community</h2>
+        <form id="post-form">
+          <div class="form-group">
+            <textarea id="post-content" placeholder="What's on your mind?" rows="4" required></textarea>
+          </div>
+          <div class="media-upload">
+            <label for="media-input" class="media-upload-label">
+              <i class="fas fa-image"></i> Add Photo/Video
+            </label>
+            <input type="file" id="media-input" accept="image/*,video/*" style="display: none;">
+          </div>
+          <button type="submit" class="post-btn">Post</button>
+        </form>
+      </div>
+
+      <!-- Posts Container -->
+      <div class="posts-container" id="posts-container">
+        <!-- Posts will be injected here via JS -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const COMMUNITY_ID = "{{ community._id }}";
+  </script>
+  <script src="{{ url_for('static', filename='community_view.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,458 @@
+/* Global Styles - Shared across all pages */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Back Button */
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    color: #2563eb;
+    text-decoration: none;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.back-btn:hover {
+    color: #1d4ed8;
+}
+
+/* Detail Header */
+.detail-header {
+    margin-bottom: 2rem;
+}
+
+.detail-header h1 {
+    font-size: 1.875rem;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.detail-header p {
+    color: #6b7280;
+}
+
+/* Responsive Design (from global styles) */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+}
+
+/* Dashboard Specific Styles (now part of trending.css) */
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1e40af;
+    margin-bottom: 0.5rem;
+}
+
+.header p {
+    color: #6b7280;
+    font-size: 1rem;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #dbeafe;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.stat-card:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+.stat-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-label {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+}
+
+.stat-number {
+    font-size: 1.875rem;
+    font-weight: bold;
+    color: #1f2937;
+}
+
+.stat-icon {
+    font-size: 2rem;
+    opacity: 0.7;
+}
+
+.stat-icon.likes {
+    color: #ef4444;
+}
+
+.stat-icon.hashtags {
+    color: #3b82f6;
+    font-weight: bold;
+}
+
+.stat-icon.reposts {
+    color: #10b981;
+}
+
+/* New: Stat icon for comments (if not already defined) */
+.stat-icon.comments {
+    color: #3b82f6; /* Consistent blue with hashtags */
+}
+
+
+/* Performers Grid */
+.performers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusted minmax for better scaling */
+    gap: 1.5rem;
+}
+
+.performer-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #dbeafe;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.performer-card:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+.performer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.8rem; /* Added for separator */
+    border-bottom: 1px solid #e2e8f0; /* Subtle separator */
+}
+
+.performer-header h3 {
+    font-size: 1.35rem; /* Slightly larger */
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.trend-icon {
+    font-size: 1.8rem; /* Slightly larger */
+    color: #f59e0b; /* Yellow/Orange for trend icon */
+}
+
+/* Top Posts */
+.top-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* Space between items in the list */
+    flex-grow: 1; /* Allows content area to expand */
+    margin-bottom: 1rem;
+}
+
+/* --- NEW/UPDATED STYLES FOR THE SMALL LIST ITEMS WITHIN .top-posts --- */
+/* These styles are crucial to fix the "bulleting" appearance and align with JS classes */
+
+.post-item-small, /* Used for posts (likes, comments, reposts) */
+.event-item-small { /* Used for events (participants) */
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* Space between elements within the item */
+    padding: 0.5rem 0; /* Padding for each item */
+    border-bottom: 1px dashed #e5e7eb; /* Subtle separator */
+}
+
+.post-item-small:last-child,
+.event-item-small:last-child {
+    border-bottom: none; /* No border for the last item */
+}
+
+.post-item-small .rank,
+.event-item-small .rank {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #2563eb; /* Blue for rank */
+    flex-shrink: 0; /* Prevent rank from shrinking */
+    width: 25px; /* Fixed width for alignment */
+    text-align: center;
+}
+
+.post-item-small img {
+    width: 50px; /* Small image size */
+    height: 50px;
+    border-radius: 8px; /* Rounded corners for images */
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* Placeholder for event icons instead of images (for event-item-small) */
+.event-icon-placeholder {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    background-color: #e0e7ff; /* Light blue background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem; /* Size of the icon inside */
+    color: #2563eb;
+    flex-shrink: 0;
+}
+
+.post-item-small .info,
+.event-item-small .info {
+    flex-grow: 1; /* Allows info section to take available space */
+    display: flex;
+    flex-direction: column;
+    min-width: 0; /* ADDED: Crucial for text truncation in flex items */
+}
+
+.post-item-small .title,
+.event-item-small .title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #374151; /* Dark gray text */
+    margin-bottom: 0.2rem;
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Add ellipsis for overflow */
+}
+
+.post-item-small .sub-info,
+.event-item-small .sub-info {
+    font-size: 0.8rem;
+    color: #6b7280; /* Medium gray text */
+}
+
+.post-item-small .metric,
+.event-item-small .metric {
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: #4b5563; /* Default metric color */
+}
+
+/* Specific metric colors for icons (for consistency with overall theme) */
+.post-item-small .metric .fas.fa-thumbs-up { color: #ef4444; } /* Likes - Red */
+.post-item-small .metric .fas.fa-comment { color: #3b82f6; } /* Comments - Blue */
+.post-item-small .metric .fas.fa-retweet { color: #10b981; } /* Reposts - Green */
+.event-item-small .metric .fas.fa-users { color: #4a90e2; } /* Participants - A shade of blue */
+
+
+.view-all-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    color: #2563eb;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: all 0.2s;
+    text-align: right; /* Align text to the right within the button */
+    padding-right: 0; /* Remove default padding that might push text */
+    margin-top: auto; /* Push button to bottom if content is short */
+}
+
+.view-all-btn:hover {
+    color: #1d4ed8;
+    background-color: #f0f8ff;
+}
+
+/* Responsive Design for the Dashboard */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .stats-grid,
+    .performers-grid {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+    }
+
+    .stat-card,
+    .performer-card {
+        padding: 1rem;
+    }
+
+    .stat-icon {
+        font-size: 2rem;
+    }
+
+    .stat-number {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.75rem;
+    }
+    .performer-header h3 {
+        font-size: 1.2rem;
+    }
+    .trend-icon {
+        font-size: 1.5rem;
+    }
+    .post-item-small,
+    .event-item-small {
+        flex-direction: row; /* Keep horizontal layout for small items if possible, adjust if too cramped */
+        align-items: flex-start;
+    }
+    .post-item-small .info,
+    .event-item-small .info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .post-item-small .metric,
+    .event-item-small .metric {
+        margin-top: 0.2rem;
+    }
+}
+/* --- Styling for the User Table generated by all-users.js --- */
+.users-table {
+    width: 100%; /* Make the table take full width of its container */
+    border-collapse: collapse; /* Remove space between cell borders */
+    margin-top: 15px; /* Space above the table */
+    font-size: 0.9em; /* Slightly smaller font for compactness */
+    min-width: 200px; /* Ensure table doesn't get too small on narrow views */
+}
+
+.users-table th, .users-table td {
+    border: 1px solid #e0e0e0; /* Light grey borders for cells */
+    padding: 8px 12px; /* Padding inside cells */
+    text-align: left; /* Align text to the left */
+}
+
+.users-table th {
+    background-color: #f5f5f5; /* Light background for header cells */
+    font-weight: bold; /* Bold text for headers */
+    color: #555; /* Darker text color for headers */
+}
+
+.users-table tbody tr:nth-child(even) {
+    background-color: #fafafa; /* Light stripe for even rows */
+}
+
+.users-table tbody tr:hover {
+    background-color: #eef; /* Subtle highlight on row hover */
+}
+
+/* --- Ensure performer-card styles are suitable for the new user list card --- */
+/* These styles should likely already be in your trending.css.
+   Ensure they allow the new 'All Registered Users' card to display well. */
+.performers-grid {
+    display: grid;
+    /* This will create a responsive grid: min 300px wide cards, as many as fit per row */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px; /* Spacing between cards */
+    margin-top: 30px; /* Space above the grid */
+}
+
+.performer-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+    padding: 20px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    cursor: pointer;
+    display: flex; /* Use flexbox for internal layout of card content */
+    flex-direction: column; /* Stack header, content, button vertically */
+}
+
+.performer-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12); /* Enhanced shadow on hover */
+}
+
+.performer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee; /* Separator for header */
+    padding-bottom: 10px;
+}
+
+.performer-header h3 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.trend-icon {
+    font-size: 1.5em;
+    color: #4CAF50; /* A nice green for the icon */
+}
+
+.top-posts {
+    flex-grow: 1; /* Allows content area within card to take up available space */
+    font-size: 0.9em;
+    color: #666;
+}
+
+.view-all-btn {
+    background-color: #007bff; /* Primary blue for buttons */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-top: 15px;
+    align-self: flex-end; /* Align button to bottom right within the card */
+    transition: background-color 0.2s ease;
+}
+
+.view-all-btn:hover {
+    background-color: #0056b3;
+}

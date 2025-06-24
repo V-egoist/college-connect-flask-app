@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communities Management - College Connect Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin-styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="admin-header">
+        <div class="header-container">
+            <div class="header-left">
+                <h1 class="logo">College Connect</h1>
+                <span class="divider">|</span>
+                <span class="subtitle">Admin Dashboard</span>
+            </div>
+            <div class="header-right">
+                <button class="settings-btn">
+                    <i class="fas fa-cog"></i>
+                </button>
+                <div class="admin-avatar">A</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="admin-nav">
+        <div class="nav-container">
+            <a href="{{ url_for('admin_dashboard_page') }}" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="{{ url_for('admin_users_page') }}" class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>Users</span>
+            </a>
+            <a href="{{ url_for('admin_posts_page') }}" class="nav-item">
+                <i class="fas fa-file-text"></i>
+                <span>Posts</span>
+            </a>
+            <a href="{{ url_for('admin_communities_page') }}" class="nav-item active">
+                <i class="fas fa-comments"></i>
+                <span>Communities</span>
+            </a>
+            <a href="{{ url_for('admin_trending_page') }}" class="nav-item">
+                <i class="fas fa-trending-up"></i>
+                <span>Trending</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <div class="page-header">
+            <h2>Communities Management</h2>
+            <button class="create-btn">Create Community</button>
+        </div>
+
+        <div class="communities-grid">
+            <div class="community-card">
+                <div class="community-header">
+                    <h3>Computer Science Students</h3>
+                    <button class="community-menu">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                </div>
+                
+                <div class="community-stats">
+                    <div class="stat-row">
+                        <span>Members:</span>
+                        <span class="stat-value">245</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>Posts:</span>
+                        <span class="stat-value">156</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>Created:</span>
+                        <span class="stat-value">2024-01-10</span>
+                    </div>
+                </div>
+                
+                <div class="community-actions">
+                    <button class="community-btn manage">Manage</button>
+                    <button class="community-btn view">View</button>
+                </div>
+            </div>
+
+            <div class="community-card">
+                <div class="community-header">
+                    <h3>Study Groups</h3>
+                    <button class="community-menu">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                </div>
+                
+                <div class="community-stats">
+                    <div class="stat-row">
+                        <span>Members:</span>
+                        <span class="stat-value">189</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>Posts:</span>
+                        <span class="stat-value">89</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>Created:</span>
+                        <span class="stat-value">2024-01-15</span>
+                    </div>
+                </div>
+                
+                <div class="community-actions">
+                    <button class="community-btn manage">Manage</button>
+                    <button class="community-btn view">View</button>
+                </div>
+            </div>
+
+            <div class="community-card">
+                <div class="community-header">
+                    <h3>Campus Events</h3>
+                    <button class="community-menu">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                </div>
+                
+                <div class="community-stats">
+                    <div class="stat-row">
+                        <span>Members:</span>
+                        <span class="stat-value">312</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>Posts:</span>
+                        <span class="stat-value">203</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>Created:</span>
+                        <span class="stat-value">2024-01-20</span>
+                    </div>
+                </div>
+                
+                <div class="community-actions">
+                    <button class="community-btn manage">Manage</button>
+                    <button class="community-btn view">View</button>
+                </div>
+            </div>
+
+            <div class="community-card">
+                <div class="community-header">
+                    <h3>Career Development</h3>
+                    <button class="community-menu">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                </div>
+                
+                <div class="community-stats">
+                    <div class="stat-row">
+                        <span>Members:</span>
+                        <span class="stat-value">167</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>Posts:</span>
+                        <span class="stat-value">134</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>Created:</span>
+                        <span class="stat-value">2024-02-01</span>
+                    </div>
+                </div>
+                
+                <div class="community-actions">
+                    <button class="community-btn manage">Manage</button>
+                    <button class="community-btn view">View</button>
+                </div>
+            </div>
+
+            <div class="community-card">
+                <div class="community-header">
+                    <h3>Sports & Recreation</h3>
+                    <button class="community-menu">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                </div>
+                
+                <div class="community-stats">
+                    <div class="stat-row">
+                        <span>Members:</span>
+                        <span class="stat-value">298</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>Posts:</span>
+                        <span class="stat-value">178</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>Created:</span>
+                        <span class="stat-value">2024-02-05</span>
+                    </div>
+                </div>
+                
+                <div class="community-actions">
+                    <button class="community-btn manage">Manage</button>
+                    <button class="community-btn view">View</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

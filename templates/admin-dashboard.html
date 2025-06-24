@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Connect Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin-styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="admin-header">
+        <div class="header-container">
+            <div class="header-left">
+                <h1 class="logo">College Connect</h1>
+                <span class="divider">|</span>
+                <span class="subtitle">Admin Dashboard</span>
+            </div>
+            <div class="header-right">
+                <button class="settings-btn">
+                    <i class="fas fa-cog"></i>
+                </button>
+                <div class="admin-avatar">A</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="admin-nav">
+        <div class="nav-container">
+            <a href="{{ url_for('admin_dashboard_page') }}" class="nav-item active">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="{{ url_for('admin_users_page') }}" class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>Users</span>
+            </a>
+            <a href="{{ url_for('admin_posts_page') }}" class="nav-item">
+                <i class="fas fa-file-text"></i>
+                <span>Posts</span>
+            </a>
+            <a href="{{ url_for('admin_communities_page') }}" class="nav-item">
+                <i class="fas fa-comments"></i>
+                <span>Communities</span>
+            </a>
+            <a href="{{ url_for('admin_trending_page') }}" class="nav-item">
+                <i class="fas fa-trending-up"></i>
+                <span>Trending</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <!-- Stats Overview -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <p class="stat-label">Total Users</p>
+                        <p class="stat-number" id="totalUsers">0</p>
+                    </div>
+                    <div class="stat-icon blue">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <p class="stat-label">Total Posts</p>
+                        <p class="stat-number" id="totalPosts">0</p>
+                    </div>
+                    <div class="stat-icon green">
+                        <i class="fas fa-file-text"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <p class="stat-label">Total Communities</p>
+                        <p class="stat-number" id="totalCommunities">0</p>
+                    </div>
+                    <div class="stat-icon purple">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <p class="stat-label">Total Events</p>
+                        <p class="stat-number" id="totalEvents">0</p>
+                    </div>
+                    <div class="stat-icon orange">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Engagement Metrics -->
+        <div class="engagement-grid">
+            <div class="engagement-card red">
+                <div class="engagement-header">
+                    <h3>Total Likes</h3>
+                    <i class="fas fa-heart"></i>
+                </div>
+                <p class="engagement-number" id="totalLikes">0</p>
+            </div>
+
+            <div class="engagement-card blue">
+                <div class="engagement-header">
+                    <h3>Total Comments</h3>
+                    <i class="fas fa-comments"></i>
+                </div>
+                <p class="engagement-number" id="totalComments">0</p>
+            </div>
+
+            <div class="engagement-card green">
+                <div class="engagement-header">
+                    <h3>Total Reposts</h3>
+                    <i class="fas fa-share"></i>
+                </div>
+                <p class="engagement-number" id="totalReposts">0</p>
+            </div>
+             <div class="engagement-card purple">
+                <div class="engagement-header">
+                    <h3>Total Hashtags</h3>
+                    <i class="fas fa-hashtag"></i>
+                </div>
+                <p class="engagement-number" id="totalHashtags">0</p>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="activity-section">
+            <h3>Recent User Activity</h3>
+            <div class="activity-list" id="recentUserActivity">
+                <!-- Activity items will be loaded here by JavaScript -->
+                <p class="text-gray-500 text-center py-4">Loading recent user activity...</p>
+            </div>
+        </div>
+         <!-- Most Liked Posts Section -->
+        <div class="activity-section mt-8">
+            <h3>Most Liked Public Posts</h3>
+            <div class="activity-list" id="mostLikedPosts">
+                <!-- Most liked posts will be loaded here by JavaScript -->
+                 <p class="text-gray-500 text-center py-4">Loading most liked posts...</p>
+            </div>
+        </div>
+
+        <!-- Most Reposted Posts Section -->
+        <div class="activity-section mt-8">
+            <h3>Most Reposted Public Posts</h3>
+            <div class="activity-list" id="mostRepostedPosts">
+                <!-- Most reposted posts will be loaded here by JavaScript -->
+                 <p class="text-gray-500 text-center py-4">Loading most reposted posts...</p>
+            </div>
+        </div>
+
+        <!-- Most Commented Posts Section -->
+        <div class="activity-section mt-8">
+            <h3>Most Commented Public Posts</h3>
+            <div class="activity-list" id="mostCommentedPosts">
+                <!-- Most commented posts will be loaded here by JavaScript -->
+                 <p class="text-gray-500 text-center py-4">Loading most commented posts...</p>
+            </div>
+        </div>
+
+        <!-- Most Used Hashtags Section -->
+        <div class="activity-section mt-8">
+            <h3>Most Used Hashtags (Public Posts)</h3>
+            <div class="activity-list" id="mostUsedHashtags">
+                <!-- Most used hashtags will be loaded here by JavaScript -->
+                 <p class="text-gray-500 text-center py-4">Loading most used hashtags...</p>
+            </div>
+        </div>
+
+         <!-- Most Participated Events Section -->
+        <div class="activity-section mt-8">
+            <h3>Most Participated Events</h3>
+            <div class="activity-list" id="mostParticipatedEvents">
+                <!-- Most participated events will be loaded here by JavaScript -->
+                 <p class="text-gray-500 text-center py-4">Loading most participated events...</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='admin-dashboard.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,433 @@
+/* --- Global & Base Styles --- */
+/* These are typically common across your application, but combined here for events.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f0f8ff; /* Light blue-ish background */
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Back Button (from your previous global styles) */
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    color: #2563eb; /* A shade of blue */
+    text-decoration: none;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.back-btn:hover {
+    color: #1d4ed8; /* Darker blue on hover */
+}
+
+/* Detail Header (from your previous global styles) */
+.detail-header {
+    margin-bottom: 2rem;
+}
+
+.detail-header h1 {
+    font-size: 1.875rem; /* ~30px */
+    font-weight: bold;
+    color: #1f2937; /* Dark gray */
+    margin-bottom: 0.5rem;
+}
+
+.detail-header p {
+    color: #6b7280; /* Medium gray */
+}
+
+/* Responsive Design (from your previous global styles) */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+}
+
+
+/* --- Events Page Specific Styles (from your provided CSS and previous events.css) --- */
+.events-container {
+    width: 90%; /* Adjusted from 90% in your input to be more flexible */
+    max-width: 900px; /* Kept max-width from my previous events.css for a focused content area */
+    margin: 2rem auto; /* Adjusted from 20px auto for more consistent spacing */
+    padding: 1.5rem; /* Adjusted from 0 20px for consistent internal padding */
+    background-color: #fff;
+    border-radius: 12px; /* Smoother corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* More subtle shadow */
+}
+/* Re-added padding from my last version for consistency, but will defer to your width logic */
+/*
+.events-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+*/
+
+
+.events-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem; /* Adjusted from 30px for consistency */
+    padding-bottom: 1rem; /* Added for separation from list */
+    border-bottom: 1px solid #e2e8f0; /* Subtle separator */
+}
+
+.events-header h1 {
+    font-size: 2.25rem; /* Larger from 28px for prominence */
+    color: #1e40af; /* Deeper blue */
+    font-weight: bold;
+}
+
+.create-event-btn {
+    background-color: #2563eb; /* Adjusted from #1877f2 for consistency with back-btn hover */
+    color: white;
+    padding: 0.75rem 1.5rem; /* Adjusted for better padding */
+    border: none;
+    border-radius: 8px; /* Slightly more rounded */
+    font-size: 1rem;
+    font-weight: 600; /* Medium bold */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Adjusted from 8px */
+    transition: background-color 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added subtle shadow */
+}
+
+.create-event-btn:hover {
+    background-color: #1d4ed8; /* Darker blue on hover */
+}
+
+.events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Adjusted from 20px */
+}
+
+.event-item {
+    display: flex;
+    background-color: #f8fafc; /* Lighter background for items */
+    border: 1px solid #dbeafe; /* Light blue border */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Lighter shadow */
+    align-items: flex-start; /* Ensure items align at top */
+    gap: 1.25rem; /* Adjusted from 20px */
+}
+
+.event-date {
+    background-color: #2563eb; /* Consistent blue */
+    color: white;
+    padding: 1rem; /* Adjusted for larger padding */
+    border-radius: 0; /* No border-radius on date box corners as it's part of card */
+    text-align: center;
+    min-width: 80px;
+    display: flex; /* Flex for centering day/month */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.event-date .day {
+    font-size: 2rem; /* Larger from 24px */
+    font-weight: bold;
+    line-height: 1; /* Tighter line height */
+}
+
+.event-date .month {
+    font-size: 0.9rem; /* Adjusted from 14px */
+    text-transform: uppercase;
+    margin-top: 0.25rem;
+}
+
+.event-details {
+    flex-grow: 1; /* Use flex-grow for details section */
+    padding: 1rem 1.25rem; /* Adjusted padding */
+}
+
+.event-details h3 {
+    font-size: 1.25rem; /* Adjusted from 20px */
+    color: #1f2937; /* Darker text */
+    margin-bottom: 0.5rem;
+    font-weight: 600; /* Medium bold */
+}
+
+.event-details p {
+    font-size: 0.95rem; /* Slightly smaller */
+    color: #4b5563; /* Slightly darker gray */
+    margin-bottom: 0.4rem; /* Adjusted from 5px */
+    display: flex; /* For icon and text alignment */
+    align-items: center;
+    gap: 0.5rem; /* Gap between icon and text */
+}
+
+.event-details p i {
+    margin-right: 0; /* Removed explicit margin, relying on gap */
+    width: auto; /* Allow icon width to be natural */
+    text-align: left; /* No need for center align here */
+    color: #6b7280; /* Consistent icon color */
+}
+
+.event-description {
+    margin-top: 0.75rem; /* Adjusted from 10px */
+    font-size: 0.875rem; /* Adjusted from 14px */
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+.event-actions {
+    display: flex;
+    flex-direction: column; /* Changed to column for stacking buttons */
+    justify-content: center;
+    align-items: center; /* Center buttons horizontally */
+    padding: 1rem; /* Adjusted padding */
+    gap: 0.75rem; /* Gap between buttons */
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.interested-btn {
+    background-color: #10b981; /* Green for Join/Interested */
+    color: white;
+    padding: 0.6rem 1.2rem; /* Adjusted padding */
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem; /* Adjusted font size */
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    width: 100%; /* Make button take full width of its container */
+    text-align: center;
+}
+
+.interested-btn:hover {
+    background-color: #059669; /* Darker green */
+}
+
+.share-btn {
+    background: none; /* No background */
+    border: 1px solid #9ca3af; /* Light gray border */
+    color: #4b5563; /* Darker gray text */
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem; /* Gap between icon and text */
+    transition: all 0.2s ease; /* Transition all for smoother hover */
+    width: 100%;
+}
+
+.share-btn:hover {
+    background-color: #e5e7eb; /* Light gray background on hover */
+    color: #1f2937; /* Darker text on hover */
+    border-color: #6b7280; /* Darker border on hover */
+}
+
+/* Responsive adjustments for event items (from your provided CSS and previous events.css) */
+@media (max-width: 600px) { /* Adjusted breakpoint for more common mobile sizes */
+    .event-item {
+        flex-direction: column; /* Stack elements vertically */
+    }
+
+    .event-date {
+        flex-direction: row; /* Date day/month side-by-side on small screens */
+        gap: 1rem; /* Gap between day and month */
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid rgba(255,255,255,0.2); /* Separator for date */
+        width: 100%; /* Full width for date container */
+        min-width: unset; /* Remove min-width override */
+    }
+    .event-date .day {
+        font-size: 1.8rem;
+    }
+    .event-date .month {
+        font-size: 0.8rem;
+    }
+
+    .event-actions {
+        flex-direction: row; /* Buttons side-by-side on small screens */
+        justify-content: flex-end; /* Align buttons to the right */
+        border-top: 1px solid #e2e8f0; /* Separator for actions */
+        padding-top: 1rem;
+        width: 100%;
+        gap: 1rem;
+    }
+    .interested-btn, .share-btn {
+        width: auto; /* Let buttons size naturally */
+        flex-grow: 1; /* Allow buttons to grow and fill space */
+    }
+}
+
+
+/* --- Modal Styles (from my previous events.css) --- */
+.modal {
+    display: none; /* Hidden by default - THIS IS THE KEY FIX FOR AUTO-OPENING */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    display: flex; /* Use flex to center content */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+
+/* Ensure the modal is hidden by default. The JS will change it to 'flex' when needed. */
+/* This rule is crucial to prevent the modal from showing automatically on page load. */
+/* The previous `display: flex;` inside the .modal rule made it visible by default. */
+#create-event-modal {
+    display: none;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    font-size: 1.75rem;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #4b5563;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="time"],
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    outline: none;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.cancel-btn {
+    background-color: #6b7280;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.cancel-btn:hover {
+    background-color: #4b5563;
+}
+
+.submit-btn {
+    background-color: #2563eb;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.submit-btn:hover {
+    background-color: #1d4ed8;
+}
+
+/* Responsive adjustments for modal */
+@media (max-width: 600px) {
+    .modal-content {
+        padding: 1.5rem;
+    }
+    .modal-content h2 {
+        font-size: 1.5rem;
+    }
+    .form-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .cancel-btn, .submit-btn {
+        width: 100%;
+    }
+}

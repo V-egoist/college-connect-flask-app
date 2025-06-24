@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communities - College Connect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='communities.css') }}"> {# Link to the communities-specific CSS #}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="{{ url_for('home') }}" class="logo">College Connect</a>
+        </div>
+        <div class="search-container">
+        <i class="fas fa-search"></i>
+        <input
+          type="text"
+          id="navSearchInput"
+          placeholder="Search College Connect..."
+        />
+        </div>
+            <a href="{{ url_for('settings') }}" class="profile-pic">
+                <img
+                  src="{{ user.profile_pic_url if user and user.profile_pic_url else url_for('static', filename='default-profile.jpg') }}"
+                  alt="Profile Picture"
+                />
+            </a>
+        </div>
+    </nav>
+    <div class="communities-container">
+        <div class="communities-header">
+            <h2>Communities</h2>
+            <button id="toggleCreateCommunityFormBtn" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Create New Community
+            </button>
+        </div>
+
+        {# Community Creation Form Container (hidden by default, toggled by JS) #}
+        <div id="createCommunityFormContainer" class="community-form-container">
+            <h3>Create a New Community</h3>
+            <form id="createCommunityForm" class="community-form" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="communityName">Community Name:</label>
+                    <input type="text" id="communityName" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="communityDescription">Description:</label>
+                    <textarea id="communityDescription" name="description" rows="4" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Community Profile Picture:</label>
+                    <div class="profile-pic-upload">
+                        <div class="profile-pic-preview">
+                            {# Default image path; JS will update this when a file is selected #}
+                            <img id="communityPicturePreview" src="{{ url_for('static', filename='default-community-pic.png') }}" alt="Community Picture Preview">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <input type="file" id="communityProfilePic" name="community_picture" accept="image/*" style="display: none;">
+                        <button type="button" onclick="document.getElementById('communityProfilePic').click()">Choose Image</button>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-success">Create Community</button>
+                <button type="button" id="cancelCreateCommunityBtn" class="btn btn-secondary">Cancel</button>
+                {# This paragraph will display messages from the form submission #}
+                <p id="formMessage" style="margin-top: 10px;"></p>
+            </form>
+        </div>
+
+        {# Section for Communities Joined by the User #}
+        <div class="communities-section">
+            <h2>Your Communities</h2>
+            {# Message displayed if no communities are joined #}
+            <p id="noJoinedCommunitiesMessage" style="display: none; text-align: center; color: #666; margin-bottom: 20px;">
+                You haven't joined any communities yet.
+            </p>
+            {# Grid where joined community cards will be dynamically inserted by JS #}
+            <div class="communities-grid" id="joinedCommunitiesGrid">
+                </div>
+        </div>
+
+        {# Section for All Available Communities #}
+        <div class="communities-section">
+            <h2>All Communities</h2>
+            {# Message displayed if no communities are available #}
+            <p id="noAllCommunitiesMessage" style="display: none; text-align: center; color: #666; margin-bottom: 20px;">
+                No communities available.
+            </p>
+            {# Grid where all community cards will be dynamically inserted by JS #}
+            <div class="communities-grid" id="allCommunitiesGrid">
+                </div>
+        </div>
+    </div>
+
+    {# IMPORTANT: This script block MUST be placed BEFORE communities.js #}
+    {# It passes the current user's ID from Flask session to JavaScript for authentication #}
+    <script>
+        window.CURRENT_USER_ID = "{{ session.get('user', {}).get('_id') }}";
+        // Optionally, you might want to pass other session data if needed in JS
+        // window.CURRENT_USERNAME = "{{ session.get('user', {}).get('username') }}";
+    </script>
+    
+    <script src="{{ url_for('static', filename='communities.js') }}"></script>
+    {# If 'main.js' contains global scripts (like common header behavior), keep it. #}
+    {# <script src="{{ url_for('static', filename='main.js') }}"></script> #}
+</body>
+</html>

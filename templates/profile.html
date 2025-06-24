@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ user.username if user_found else 'User Not Found' }} Profile - College Connect</title>
+  
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+</head>
+<body>
+  <!-- Top Navigation -->
+  <nav class="top-nav">
+    <div class="nav-left">
+      <a href="{{ url_for('home') }}" class="logo">College Connect</a>
+    </div>
+    <div class="nav-right">
+      <div class="search-container">
+        <i class="fas fa-search"></i>
+        <input
+          type="text"
+          id="navSearchInput"
+          placeholder="Search College Connect..."
+          aria-label="Search College Connect"
+        />
+      </div>
+      <a href="{{ url_for('settings') }}" class="profile-pic">
+        <img
+          src="{{ user.profile_pic_url if user and user.profile_pic_url else url_for('static', filename='default-profile.jpg') }}"
+          alt="Current User Profile Picture"
+        />
+      </a>
+    </div>
+  </nav>
+
+  <!-- Profile Section -->
+  <main class="profile-container" role="main">
+    {% if user_found %}
+    <section class="profile-header" aria-label="User Profile Header">
+      <div class="profile-image">
+        <img
+          src="{{ user.profile_pic_url }}" {# Use profile_pic_url here #}
+          alt="{{ user.username }} Profile Picture"
+          loading="lazy"
+        />
+      </div>
+      <div class="profile-info">
+        <div class="profile-top">
+          <h1>{{ user.username }}</h1> {# Main username display #}
+          <p class="profile-username">@{{ user.username }}</p> {# Secondary username display #}
+          {% if is_current_user_profile %}
+            <a href="{{ url_for('settings') }}" class="edit-profile-button">
+              <i class="fas fa-edit"></i> Edit Profile
+            </a>
+          {% endif %}
+        </div>
+
+        <div class="profile-bio" aria-label="User Bio">
+          {{ user.bio | default("No bio provided yet.") }}
+        </div>
+      </div>
+    </section>
+
+    {# REMOVED: Posts Section was here #}
+    {# <section class="profile-content" aria-label="User Posts"> ... </section> #}
+
+    {% else %}
+    <div class="user-not-found">
+      <h1>User Not Found</h1>
+      <p>The profile for "@{{ username }}" could not be found.</p>
+      <a href="{{ url_for('home') }}" class="back-home-button">Go to Home</a>
+    </div>
+    {% endif %}
+  </main>
+
+  {# main.js is likely for global elements like top-nav search, keep it if needed globally #}
+  <script src="{{ url_for('static', filename='main.js') }}"></script> 
+  {# REMOVED: profile.js as it's no longer needed without the posts section #}
+  {# <script src="{{ url_for('static', filename='profile.js') }}"></script> #}
+</body>
+</html>

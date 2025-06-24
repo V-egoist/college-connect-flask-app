@@ -1,0 +1,500 @@
+/* Community Header */
+.community-header {
+    background-color: white;
+    padding: 5px 20px 10px; /* Adjusted padding-top from 10px to 5px to reduce space */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: fixed; /* Changed to fixed to stay at top */
+    top: 60px; /* Directly below the top navigation (~70px tall) */
+    left: 0; /* Extends to the left edge */
+    width: 100%; /* Covers full width of the viewport */
+    z-index: 999; /* Ensure it stays above content when scrolling, but below top-nav */
+    margin: 0;
+}
+
+.community-header h1 {
+    color: #1877f2;
+    margin-bottom: 5px;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+.community-header h1:hover {
+    text-decoration: underline;
+}
+
+.community-header p {
+    color: #65676b;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Base Body Padding to account for fixed top elements */
+body {
+    background-color: #f0f2f5;
+    /* Adjusted padding-top: top-nav (~70px) + community-header (~65px, due to reduced padding) = ~135px */
+    padding-top: 135px; 
+    padding-bottom: 0; /* Default, overridden by media query for mobile bottom nav */
+}
+
+/* Main Container Layout (Desktop View) */
+.main-container {
+    /* Adjusted margin to push content away from fixed sidebar, and allow right side to stretch */
+    margin: 20px 0 20px 320px; /* top, right, bottom, left. Explicitly set right margin to 0. */
+    width: calc(100% - 320px); /* This makes it span the remaining horizontal space of the viewport */
+    height: auto; /* Let content dictate its height for scrolling */
+    padding: 0 20px; /* Horizontal padding for the content that appears on the right */
+    display: block; /* Ensures block flow for the content on the right */
+    box-sizing: border-box; /* Include padding in width calculation */
+    background-color: #f0f2f5; /* Matches the background of the middle-content */
+    max-width: none; /* Explicitly ensure no max-width limits stretching */
+}
+
+/* Left Sidebar (Desktop View - Fixed and Visible) */
+.left-sidebar {
+    display: block; /* Make it visible on desktop */
+    width: 300px; /* Fixed width for the sidebar */
+    background-color: white;
+    padding: 20px;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1); /* Shadow to the right of the sidebar */
+    overflow-y: auto; /* Enable scrolling for sidebar content if it overflows */
+    flex-shrink: 0; /* Prevents it from shrinking in case it was a flex item */
+    
+    /* Fixed positioning to keep it on the left and cover height */
+    position: fixed; 
+    left: 0;
+    /* Adjusted top: Starts directly below the combined height of top-nav and community-header */
+    top: 135px; /* (top-nav 70px + community-header ~65px) */
+    height: calc(100vh - 135px); /* Full viewport height minus fixed top elements */
+    z-index: 998; /* Ensures it's above the middle content but below the sticky header/top-nav */
+    border-radius: 0; /* No specific border-radius as it's full height on left */
+}
+
+/* Middle Content (Desktop View - Takes remaining space) */
+.middle-content {
+    /* This will naturally fill the remaining width of its parent (.main-container). */
+    flex: 1; /* This flex property is vestigial but harmless since main-container is not display:flex */
+    padding: 20px;
+    overflow-y: auto; /* Allows content to scroll within this area */
+    background-color: #f0f2f5;
+    margin-left: 0; /* Ensure no extra left margin */
+    width: auto; /* This will make it fill its parent's width */
+}
+
+/* Community Actions */
+.community-actions {
+    margin-bottom: 20px;
+}
+
+.leave-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #f0f2f5;
+    color: #333;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.leave-btn:hover {
+    background-color: #e4e6eb;
+}
+
+/* Community Info Section */
+.community-info-section {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.community-info-section h3 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.community-description p {
+    color: #65676b;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+/* Menu Section */
+.menu-section {
+    margin-bottom: 20px;
+}
+
+.menu-section h3 {
+    color: #65676b;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Menu Items (Desktop default, overridden for mobile) */
+.sidebar-menu li {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    transition: background-color 0.2s;
+}
+
+.sidebar-menu li:hover {
+    background-color: #f0f2f5;
+}
+
+.sidebar-menu li i {
+    color: #1877f2;
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+.sidebar-menu li a {
+    color: #1c1e21;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* Post Creation Area */
+.post-creation-area {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.post-creation-area h2 {
+    color: #1c1e21;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+#post-content {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    resize: none;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+#post-content:focus {
+    outline: none;
+    border-color: #1877f2;
+    box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+}
+
+.media-upload {
+    margin-bottom: 15px;
+}
+
+.media-upload-label {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    background-color: #e4e6eb;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.media-upload-label:hover {
+    background-color: #d8dadf;
+}
+
+.media-upload-label i {
+    margin-right: 8px;
+    color: #1877f2;
+}
+
+.post-btn {
+    background-color: #1877f2;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.post-btn:hover {
+    background-color: #166fe5;
+}
+
+/* Posts Container */
+.posts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Individual Posts */
+.post {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.post-header {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.post-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.post-user-info h4 {
+    color: #1c1e21;
+    margin: 0 0 2px 0;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.post-user-info p {
+    color: #65676b;
+    font-size: 13px;
+    margin: 0;
+}
+
+.post-content {
+    padding: 0 15px 15px;
+    color: #1c1e21;
+    line-height: 1.5;
+}
+
+.post-content p {
+    margin: 0;
+}
+
+.post-image {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Post Actions */
+.post-actions {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid #e4e6eb;
+}
+
+.action-button {
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+    color: #65676b;
+    flex: 1;
+    justify-content: center;
+}
+
+.action-button:hover {
+    background-color: #f0f2f5;
+}
+
+.action-button i {
+    margin-right: 8px;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 992px) {
+    /* Adjust body padding for fixed top and bottom navs */
+    body {
+        padding-top: 70px; /* Space for fixed top nav */
+        padding-bottom: 70px; /* Space for fixed bottom nav */
+    }
+
+    /* Top navigation remains fixed, but search bar size might be adjusted in a global style.css */
+    /* top-nav, nav-right, search-container styles might be inherited or adjusted from global style.css */
+
+    .community-header {
+        position: static; /* Make it scrollable on mobile */
+        top: 0; /* No sticky offset when static */
+        padding: 10px; /* Adjust padding for mobile */
+        font-size: 1.2rem; /* Smaller font size */
+        width: auto; /* Let it take natural width */
+    }
+
+    .main-container {
+        max-width: 100%; /* Allow full width on mobile */
+        margin: 20px auto; /* Center with auto margins */
+        padding: 0 10px; /* Adjust padding */
+        display: flex; /* Use flexbox for stacking content */
+        flex-direction: column; /* Stack children vertically */
+        gap: 20px; /* Add gap between stacked items */
+        height: auto; /* Let content dictate height */
+    }
+
+    /* Left Sidebar - now a fixed bottom navigation on mobile */
+    .left-sidebar {
+        display: block; /* Make it visible again */
+        position: fixed; 
+        bottom: 0;
+        left: 0;
+        width: 100%; /* Full width */
+        height: 70px; /* Fixed height for the bottom nav */
+        background-color: white;
+        box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Shadow at the top */
+        border-radius: 10px 10px 0 0; /* Rounded corners only on top */
+        padding: 0; /* Remove internal padding to maximize space for nav items */
+        overflow-y: hidden; /* Hide vertical scrollbar */
+        z-index: 1000; /* Ensure it's on top */
+        
+        display: flex; /* Use flexbox for its internal content */
+        justify-content: space-around; /* Distribute menu items evenly */
+        align-items: center;
+        flex-direction: row; /* Ensure menu items are horizontal */
+    }
+    
+    /* Hide specific sections within the sidebar when it's the bottom nav */
+    .left-sidebar .community-actions,
+    .left-sidebar .community-info-section {
+        display: none; 
+    }
+
+    .left-sidebar .menu-section {
+        flex-grow: 1; /* Allow menu section to take available space */
+        display: flex; /* Make it a flex container to center its menu */
+        justify-content: center;
+        align-items: center;
+        height: 100%; /* Take full height of bottom bar */
+        margin: 0; /* Remove margin */
+    }
+
+    .left-sidebar .menu-section h3 {
+        display: none; /* Hide titles in mobile bottom nav */
+    }
+
+    .sidebar-menu {
+        display: flex;
+        flex-direction: row; /* Arrange items horizontally */
+        justify-content: space-around; /* Distribute items evenly */
+        align-items: center;
+        width: 100%; /* Take full width of parent */
+        height: 100%; /* Take full height of parent */
+    }
+
+    .sidebar-menu li {
+        flex: 1; /* Make each item take equal space */
+        padding: 5px; /* Reduced padding for compact buttons */
+        display: flex;
+        flex-direction: column; /* Stack icon and text */
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem; /* Smaller text size */
+        color: #65676b; /* Default text color */
+        cursor: pointer;
+        margin-bottom: 0; /* Remove bottom margin */
+    }
+
+    .sidebar-menu li:hover {
+        background-color: #f0f2f5;
+    }
+
+.sidebar-menu li i {
+    margin-right: 0; /* Remove right margin for stacked icon/text */
+    margin-bottom: 3px; /* Small space between icon and text */
+    font-size: 1.2rem; /* Icon size */
+}
+
+.sidebar-menu li a {
+    padding: 0; /* Remove padding from link itself as it's on the li */
+    height: 100%; /* Make link fill the li area */
+    width: 100%; /* Make link fill the li area */
+    text-decoration: none; /* Ensure no underline */
+    color: inherit; /* Inherit color from li */
+}
+
+/* Middle Content - Main content area for mobile */
+.middle-content {
+    order: 1; /* Ensure middle content comes first */
+    width: 100%; /* Ensure it takes full width within the flex container */
+    max-width: none; /* Remove any max-width constraints */
+    margin: 0 auto; /* Center content horizontally */
+    padding: 15px; /* Adjust padding for mobile */
+}
+
+.post-bottom {
+    flex-wrap: wrap; /* Allow post options to wrap */
+    justify-content: center; /* Center options when wrapped */
+}
+.post-option {
+    flex-basis: 48%; /* Two options per row */
+    margin-bottom: 10px;
+}
+}
+
+@media (max-width: 480px) {
+/* Further adjustments for very small phone screens */
+.main-container {
+    padding: 0 5px; 
+}
+.community-header {
+    padding: 10px 5px;
+}
+.top-nav {
+    padding: 10px 5px; 
+    flex-wrap: wrap; 
+    justify-content: center;
+}
+.nav-right {
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 10px;
+}
+.search-container {
+    width: 100%; 
+}
+.sidebar-menu li {
+    font-size: 0.7rem; 
+}
+.sidebar-menu li i {
+    font-size: 1rem; 
+}
+.middle-content {
+    padding: 10px; /* Reduce padding even further */
+}
+.post-creation-area {
+    padding: 10px;
+}
+.post-actions {
+    flex-direction: column;
+    gap: 5px;
+}
+.action-button {
+    justify-content: flex-start;
+}
+}

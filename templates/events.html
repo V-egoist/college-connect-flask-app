@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - College Connect</title>
+    <!-- Link to your main style.css if it contains general layout/nav styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Link to your combined events.css for page-specific and modal styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='events.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="/home" class="logo">College Connect</a> <!-- Link to home.html -->
+        </div>
+        <div class="nav-right">
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search College Connect...">
+            </div>
+            <a href="/settings" class="profile-pic">
+                <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Profile Picture">
+            </a>
+            
+        </div>
+    </nav>
+
+    <div class="events-container">
+        <div class="events-header">
+            <h1>Events</h1>
+            <button class="create-event-btn" id="create-event-btn"><i class="fas fa-plus"></i> Create Event</button>
+        </div>
+
+        <div class="events-list" id="events-list-container">
+            <p>Loading events...</p>
+            <!-- Dynamic event items will be inserted here by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Event Creation Modal (Hidden by default) -->
+    <div id="create-event-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-modal-btn">&times;</span>
+            <h2>Create New Event</h2>
+            <form id="create-event-form">
+                <div class="form-group">
+                    <label for="event-title">Event Title</label>
+                    <input type="text" id="event-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="event-date">Date</label>
+                    <input type="date" id="event-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="event-time">Time</label>
+                    <input type="time" id="event-time" required>
+                </div>
+                <div class="form-group">
+                    <label for="event-location">Location</label>
+                    <input type="text" id="event-location" required>
+                </div>
+                <div class="form-group">
+                    <label for="event-description">Description</label>
+                    <textarea id="event-description" rows="4"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="cancel-btn" id="cancel-event-btn">Cancel</button>
+                    <button type="submit" class="submit-btn" id="submit-event-btn">Create Event</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='events.js') }}"></script>
+</body>
+</html>

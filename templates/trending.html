@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Trending Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='trending.css') }}">
+    <!-- Added Font Awesome for comment icon -->
+    <link rel="stylesheet" href=<img src="{{ user.profile_pic_url if user and user.profile_pic_url else url_for('static', filename='default-profile.jpg') }}" alt="Profile Picture">
+>
+    <!-- Link to your main style.css for the top-nav if it's separate,
+         otherwise ensure trending.css contains top-nav styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Top Navigation Bar (Copied from your main College Connect layout) -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="/home" class="logo">College Connect</a> <!-- Corrected href to '/home.html' -->
+        </div>
+        <div class="nav-right">
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="navSearchInput" placeholder="Search College Connect...">
+            </div>
+            <a href="/settings" class="profile-pic">
+                <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Profile Picture">
+            </a>
+            
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Social Media Trending Dashboard</h1>
+            <p>Track your content performance and engagement</p>
+        </div>
+
+        <!-- Stats Overview -->
+        <div class="stats-grid">
+            <!-- Total Posts -->
+            <div class="stat-card" onclick="window.location.href='/trending/total_posts'">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <p class="stat-label">Total Posts</p>
+                        <p class="stat-number" id="total-posts-value">Loading...</p>
+                    </div>
+                    <div class="stat-icon">📄</div> <!-- Added icon -->
+                </div>
+            </div>
+
+            <!-- Total Likes -->
+            <div class="stat-card" onclick="window.location.href='/trending/total_likes'">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <p class="stat-label">Total Likes</p>
+                        <p class="stat-number" id="total-likes-value">Loading...</p>
+                    </div>
+                    <div class="stat-icon likes">❤️</div> <!-- Added icon -->
+                </div>
+            </div>
+
+            <!-- Total Comments -->
+            <div class="stat-card" onclick="window.location.href='/trending/total_comments'">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <p class="stat-label">Total Comments</p>
+                        <p class="stat-number" id="total-comments-value">Loading...</p>
+                    </div>
+                    <div class="stat-icon comments">💬</div> <!-- Added icon -->
+                </div>
+            </div>
+
+            <!-- Total Reposts -->
+            <div class="stat-card" onclick="window.location.href='/trending/total_reposts'">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <p class="stat-label">Total Reposts</p>
+                        <p class="stat-number" id="total-reposts-value">Loading...</p>
+                    </div>
+                    <div class="stat-icon reposts">🔄</div> <!-- Added icon -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Performers -->
+        <div class="performers-grid">
+            <!-- Most Liked -->
+            <div class="performer-card" onclick="window.location.href='/trending/most_liked_posts'">
+                <div class="performer-header">
+                    <h3>Most Liked Posts</h3>
+                    <span class="trend-icon">📈</span>
+                </div>
+                <div class="top-posts" id="most-liked-posts-content">
+                    <p>Loading...</p>
+                </div>
+                <button class="view-all-btn">View All &rarr;</button>
+            </div>
+
+            <!-- Most Commented Posts -->
+            <div class="performer-card" onclick="window.location.href='/trending/most_commented_posts'">
+                <div class="performer-header">
+                    <h3>Most Commented Posts</h3>
+                    <span class="trend-icon">📈</span>
+                </div>
+                <div class="top-posts" id="most-commented-posts-content">
+                    <p>Loading...</p>
+                </div>
+                <button class="view-all-btn">View All &rarr;</button>
+            </div>
+
+            <!-- Most Reposts -->
+            <div class="performer-card" onclick="window.location.href='/trending/most_reposted_posts'">
+                <div class="performer-header">
+                    <h3>Most Reposts</h3>
+                    <span class="trend-icon">📈</span>
+                </div>
+                <div class="top-posts" id="most-reposted-posts-content">
+                    <p>Loading...</p>
+                </div>
+                <button class="view-all-btn">View All &rarr;</button>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='trending.js') }}"></script>
+</body>
+</html>

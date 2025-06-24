@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comments - College Connect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='comments.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+     <nav class="top-nav">
+        <div class="nav-left">
+            <a href="{{ url_for('home') }}" class="logo">College Connect</a>
+        </div>
+        <div class="search-container">
+        <i class="fas fa-search"></i>
+        <input
+          type="text"
+          id="navSearchInput"
+          placeholder="Search College Connect..."
+        />
+        </div>
+            <a href="{{ url_for('settings') }}" class="profile-pic">
+                <img
+                  src="{{ user.profile_pic_url if user and user.profile_pic_url else url_for('static', filename='default-profile.jpg') }}"
+                  alt="Profile Picture"
+                />
+            </a>
+        </div>
+    </nav>
+
+    <div class="comments-container">
+        <div class="original-post" id="original-post-display" data-post-id="{{ post_id }}">
+            <p>Loading post...</p>
+        </div>
+
+        <div class="comment-form-container">
+            <div class="comment-form">
+                <img id="current-user-avatar-comment-form" src="https://randomuser.me/api/portraits/men/1.jpg" alt="Your Avatar" class="comment-avatar">
+                <div class="comment-input-container">
+                    <textarea id="comment-input" placeholder="Write a comment..." rows="2"></textarea>
+                    <button id="post-comment-btn" class="post-comment-btn">Post Comment</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="comments-list" id="comments-list">
+            <p>No comments yet. Be the first!</p>
+        </div>
+    </div>
+
+    <script>
+        // You have two ways to get the POST_ID.
+        // The `const POST_ID = "{{ post_id }}";` line here is robust.
+        // It should be used consistently in comments.js.
+        // For comments.js as you provided, this is the one it uses:
+        const POST_ID = "{{ post_id }}"; 
+        console.log("POST_ID from comments.html:", POST_ID); // Good for debugging
+    </script>
+    <script src="{{ url_for('static', filename='comments.js') }}"></script>
+</body>
+</html>

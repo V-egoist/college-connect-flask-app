@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - College Connect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='search.css') }}">
+
+    
+   
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="{{ url_for('home') }}" class="logo">College Connect</a>
+        </div>
+        <div class="nav-right">
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="navSearchInput" placeholder="Search College Connect..." value="{{ initial_query if initial_query }}">
+            </div>
+            <a href="{{ url_for('settings') }}" class="profile-pic">
+                <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Profile Picture">
+            </a>
+        </div>
+    </nav>
+
+    <div class="main-container search-results-container">
+
+        <div class="search-filters">
+            <h3>Filters</h3>
+            <div class="filter-group">
+                <label>Type</label>
+                <div class="filter-options">
+                    <button class="filter-btn active" data-type="all">All</button>
+                    
+                    <button class="filter-btn" data-type="people">People</button>
+                    <button class="filter-btn" data-type="communities">Communities</button>
+                    <button class="filter-btn" data-type="events">Events</button>
+                </div>
+            </div>
+           
+        </div>
+
+        <div class="search-results">
+            <h2>Search Results {{ 'for "' + initial_query + '"' if initial_query }}</h2>
+
+            <div id="results-container">
+                <p style="text-align: center; color: #666;">Loading search results...</p>
+            </div>
+
+            <div id="userSearchError" class="form-error-message" style="color: red; margin-top: 10px; text-align: center;"></div>
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='search.js') }}"></script>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
