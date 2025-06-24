@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events - College Connect</title>
-    <!-- Link to your main style.css if it contains general layout/nav styles -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <!-- Link to your combined events.css for page-specific and modal styles -->
     <link rel="stylesheet" href="{{ url_for('static', filename='events.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -22,7 +20,9 @@
                 <input type="text" placeholder="Search College Connect...">
             </div>
             <a href="/settings" class="profile-pic">
-                <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Profile Picture">
+            <img src="{{ user.profile_pic_url if user and user.profile_pic_url else url_for('static', filename='default-profile.jpg') }}"
+                  alt="Profile Picture"
+                />  
             </a>
             
         </div>
