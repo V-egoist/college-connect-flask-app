@@ -13,7 +13,10 @@ import uuid # Import for generating unique tokens
 import secrets # Good for generating strong random tokens
 import json
 
+from dotenv import load_dotenv
 
+
+load_dotenv()
 
 import uuid # ADDED: For more robust unique filenames
 
