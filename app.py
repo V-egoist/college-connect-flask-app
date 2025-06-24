@@ -1537,7 +1537,7 @@ def get_single_post_details(post_id):
         else:
             post_data_for_json['author_id'] = 'unknown'
 
-        # Reposting Logic: UPDATED PART FOR REPOST COUNT
+        # Reposting Logic:
         post_data_for_json['is_repost'] = post.get('is_repost', False)
         # Calculate repost_count for the main post being viewed
         post_data_for_json['repost_count'] = db.posts.count_documents({'original_post_id': post_obj_id})
@@ -1591,12 +1591,10 @@ def get_single_post_details(post_id):
                 else:
                     post_data_for_json['original_post_details'] = None # Original post not found (e.g., deleted)
             else:
-                post_data_for_json['original_post_id'] = None # Invalid original_post_id in DB
-                post_data_for_json['original_post_details'] = None # No original details to fetch
+                post_data_for_json['original_post_id'] = None 
+                post_data_for_json['original_post_details'] = None # 
 
-        # If it's an original post (not a repost), handle its own author details
-        # If it's a repost, the author_name and profile_pic_url of post_data_for_json
-        # should refer to the reposter.
+        
         if not post_data_for_json['is_repost']:
             author_info = None
             if ObjectId.is_valid(post_data_for_json['author_id']):
