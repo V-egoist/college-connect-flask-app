@@ -1482,7 +1482,7 @@ def unlike_post(post_id):
 @app.route('/post/<post_id>/details', methods=['GET'])
 def post_details_page(post_id):
     if 'user_id' not in session:
-        return redirect(url_for('login_page')) # Or 'login' if that's your function name
+        return redirect(url_for('login_page')) 
 
     try:
         ObjectId(post_id)
@@ -1491,7 +1491,7 @@ def post_details_page(post_id):
 
     return render_template('comments.html', post_id=post_id)
 
-# In app.py - Add these new API routes
+
 @app.route('/api/posts/<post_id>', methods=['GET'])
 def get_single_post_details(post_id):
     print(f"--- API Call: get_single_post_details for post_id: {post_id} ---")
@@ -1505,12 +1505,7 @@ def get_single_post_details(post_id):
             session.pop('user_id', None)
             current_user_obj_id = None
 
-    # Removed the 401 Unauthorized check here as a single post detail should be viewable
-    # by anyone, but user-specific like/repost status will only be available if logged in.
-    # If you intend for this route to be strictly logged-in only, uncomment the 401 check.
-    # if current_user_obj_id is None:
-    #     print("Unauthorized access to single post details API (user not logged in or invalid session ID).")
-    #     return jsonify({'message': 'Unauthorized'}), 401
+   
 
     try:
         post_obj_id = ObjectId(post_id)
@@ -1578,7 +1573,7 @@ def get_single_post_details(post_id):
                             print(f"Error fetching original author info for original post {original_details_for_json.get('_id', 'N/A')} with ID '{original_details_for_json['author_id']}': {e}")
 
                     if original_author_info:
-                        original_details_for_json['author_name'] = original_author_info.get('name', original_author_info.get('username', 'Unknown User'))
+                        original_details_for_json['author_name'] = original_author_info.get('username', original_author_info.get('username', 'Unknown User'))
                         original_details_for_json['profile_pic_url'] = original_author_info.get('profile_pic_url', url_for('static', filename='default-profile.jpg'))
                     else:
                         original_details_for_json['author_name'] = 'Unknown User'
@@ -1813,14 +1808,13 @@ def add_comment(post_id):
         result = db.comments.insert_one(new_comment)
         print(f"DEBUG: Comment added successfully with ID: {result.inserted_id}")
 
-        # --- ADD THIS LINE TO INCREMENT COMMENTS_COUNT ---
-        # Increment the comments_count on the post document
+      
         db.posts.update_one(
             {'_id': post_obj_id},
             {'$inc': {'comments_count': 1}}
         )
         print(f"DEBUG: comments_count incremented for post {post_obj_id}")
-        # --- END ADDED LINE ---
+        
 
         return jsonify({'message': 'Comment added', 'comment_id': str(result.inserted_id)}), 201
 
