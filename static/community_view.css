@@ -329,172 +329,153 @@ body {
     margin-right: 8px;
 }
 
-/* Mobile Responsive Adjustments */
 @media (max-width: 992px) {
-    /* Adjust body padding for fixed top and bottom navs */
-    body {
-        padding-top: 70px; /* Space for fixed top nav */
-        padding-bottom: 70px; /* Space for fixed bottom nav */
-    }
+  body {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
 
-    /* Top navigation remains fixed, but search bar size might be adjusted in a global style.css */
-    /* top-nav, nav-right, search-container styles might be inherited or adjusted from global style.css */
+  .community-header {
+    position: static;
+    padding: 10px 10px;
+    font-size: 1rem;
+    text-align: center;
+    background-color: white;
+  }
 
-    .community-header {
-        position: static; /* Make it scrollable on mobile */
-        top: 0; /* No sticky offset when static */
-        padding: 10px; /* Adjust padding for mobile */
-        font-size: 1.2rem; /* Smaller font size */
-        width: auto; /* Let it take natural width */
-    }
+  .main-container {
+    margin: 0;
+    width: 100%;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 
-    .main-container {
-        max-width: 100%; /* Allow full width on mobile */
-        margin: 20px auto; /* Center with auto margins */
-        padding: 0 10px; /* Adjust padding */
-        display: flex; /* Use flexbox for stacking content */
-        flex-direction: column; /* Stack children vertically */
-        gap: 20px; /* Add gap between stacked items */
-        height: auto; /* Let content dictate height */
-    }
+  .left-sidebar {
+    position: fixed;
+    bottom: 0;
+    top: auto;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: white;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+  }
 
-    /* Left Sidebar - now a fixed bottom navigation on mobile */
-    .left-sidebar {
-        display: block; /* Make it visible again */
-        position: fixed; 
-        bottom: 0;
-        left: 0;
-        width: 100%; /* Full width */
-        height: 70px; /* Fixed height for the bottom nav */
-        background-color: white;
-        box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Shadow at the top */
-        border-radius: 10px 10px 0 0; /* Rounded corners only on top */
-        padding: 0; /* Remove internal padding to maximize space for nav items */
-        overflow-y: hidden; /* Hide vertical scrollbar */
-        z-index: 1000; /* Ensure it's on top */
-        
-        display: flex; /* Use flexbox for its internal content */
-        justify-content: space-around; /* Distribute menu items evenly */
-        align-items: center;
-        flex-direction: row; /* Ensure menu items are horizontal */
-    }
-    
-    /* Hide specific sections within the sidebar when it's the bottom nav */
-    .left-sidebar .community-actions,
-    .left-sidebar .community-info-section {
-        display: none; 
-    }
+  .left-sidebar .community-actions,
+  .left-sidebar .community-info-section,
+  .left-sidebar .menu-section h3 {
+    display: none;
+  }
 
-    .left-sidebar .menu-section {
-        flex-grow: 1; /* Allow menu section to take available space */
-        display: flex; /* Make it a flex container to center its menu */
-        justify-content: center;
-        align-items: center;
-        height: 100%; /* Take full height of bottom bar */
-        margin: 0; /* Remove margin */
-    }
+  .sidebar-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+  }
 
-    .left-sidebar .menu-section h3 {
-        display: none; /* Hide titles in mobile bottom nav */
-    }
+  .sidebar-menu li {
+    flex: 1;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: #65676b;
+    cursor: pointer;
+  }
 
-    .sidebar-menu {
-        display: flex;
-        flex-direction: row; /* Arrange items horizontally */
-        justify-content: space-around; /* Distribute items evenly */
-        align-items: center;
-        width: 100%; /* Take full width of parent */
-        height: 100%; /* Take full height of parent */
-    }
+  .sidebar-menu li i {
+    margin-bottom: 3px;
+    font-size: 1.2rem;
+  }
 
-    .sidebar-menu li {
-        flex: 1; /* Make each item take equal space */
-        padding: 5px; /* Reduced padding for compact buttons */
-        display: flex;
-        flex-direction: column; /* Stack icon and text */
-        align-items: center;
-        justify-content: center;
-        font-size: 0.75rem; /* Smaller text size */
-        color: #65676b; /* Default text color */
-        cursor: pointer;
-        margin-bottom: 0; /* Remove bottom margin */
-    }
+  .sidebar-menu li a {
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 
-    .sidebar-menu li:hover {
-        background-color: #f0f2f5;
-    }
+  .middle-content {
+    width: 100%;
+    padding: 15px;
+  }
 
-.sidebar-menu li i {
-    margin-right: 0; /* Remove right margin for stacked icon/text */
-    margin-bottom: 3px; /* Small space between icon and text */
-    font-size: 1.2rem; /* Icon size */
-}
+  .post-bottom {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
-.sidebar-menu li a {
-    padding: 0; /* Remove padding from link itself as it's on the li */
-    height: 100%; /* Make link fill the li area */
-    width: 100%; /* Make link fill the li area */
-    text-decoration: none; /* Ensure no underline */
-    color: inherit; /* Inherit color from li */
-}
-
-/* Middle Content - Main content area for mobile */
-.middle-content {
-    order: 1; /* Ensure middle content comes first */
-    width: 100%; /* Ensure it takes full width within the flex container */
-    max-width: none; /* Remove any max-width constraints */
-    margin: 0 auto; /* Center content horizontally */
-    padding: 15px; /* Adjust padding for mobile */
-}
-
-.post-bottom {
-    flex-wrap: wrap; /* Allow post options to wrap */
-    justify-content: center; /* Center options when wrapped */
-}
-.post-option {
-    flex-basis: 48%; /* Two options per row */
+  .post-option {
+    flex-basis: 48%;
     margin-bottom: 10px;
-}
+  }
 }
 
 @media (max-width: 480px) {
-/* Further adjustments for very small phone screens */
-.main-container {
-    padding: 0 5px; 
-}
-.community-header {
+  .main-container {
+    padding: 0 5px;
+  }
+
+  .community-header {
     padding: 10px 5px;
-}
-.top-nav {
-    padding: 10px 5px; 
-    flex-wrap: wrap; 
+  }
+
+  .top-nav {
+    padding: 10px 5px;
+    flex-wrap: wrap;
     justify-content: center;
-}
-.nav-right {
-    flex-wrap: wrap; 
+  }
+
+  .nav-right {
+    flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
-}
-.search-container {
-    width: 100%; 
-}
-.sidebar-menu li {
-    font-size: 0.7rem; 
-}
-.sidebar-menu li i {
-    font-size: 1rem; 
-}
-.middle-content {
-    padding: 10px; /* Reduce padding even further */
-}
-.post-creation-area {
+  }
+
+  .search-container {
+    width: 100%;
+  }
+
+  .sidebar-menu li {
+    font-size: 0.7rem;
+  }
+
+  .sidebar-menu li i {
+    font-size: 1rem;
+  }
+
+  .middle-content {
     padding: 10px;
-}
-.post-actions {
+  }
+
+  .post-creation-area {
+    padding: 10px;
+  }
+
+  .post-actions {
     flex-direction: column;
     gap: 5px;
-}
-.action-button {
+  }
+
+  .action-button {
     justify-content: flex-start;
-}
+  }
 }
